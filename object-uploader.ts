@@ -55,7 +55,7 @@ export class ObjectUploader extends WritableStream<Uint8Array> {
               etag: sanitizeETag(response.headers.get("etag") ?? undefined),
               versionId: getVersionId(response.headers),
             };
-            await response.body?.cancel();
+            await response.blob();
             return;
           }
 
